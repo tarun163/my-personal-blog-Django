@@ -1,15 +1,166 @@
-<!DOCTYPE html>
+<!doctype html>
 <html lang="en">
 
 <head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Register page</title>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="style.css">
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-BmbxuPwQa2lc/FVzBcNJ7UAyJxM6wuqIj61tLrc4wSX0szH/Ev+nYRRuWlolflfl" crossorigin="anonymous">
+    <link rel="stylesheet" href="https://use.fontawesome.com/releases/v5.8.1/css/all.css" integrity="sha384-50oBUHEmvpQ+1lW4y57PTFmhCaXp0ML5d60M1M7uH2+nqUivzIebhndOJK28anvf" crossorigin="anonymous">
+    <title>signup-page</title>
 </head>
-register here
+<style>
+    body {
+        background-image: url('https://wallpaper.dog/large/20395919.jpg');
+    }
+    
+    .navbar {
+        background-color: #3f4346;
+        height: 70px;
+    }
+    
+    .navitem ul {
+        display: flex;
+        list-style-type: none;
+    }
+    
+    .navitem ul li {
+        text-decoration: none;
+        padding-left: 3rem;
+    }
+    
+    .navitem ul li a {
+        text-decoration: none;
+        color: aliceblue;
+        font-size: 17px;
+        font-weight: 500;
+    }
+    
+    .navitem ul li a span {
+        color: rgb(235, 146, 31);
+    }
+    
+    .my-info {
+        background-color: #3f4346;
+        font-family: sans-serif;
+        color: aliceblue;
+    }
+    
+    .my-info img {
+        max-width: 100%;
+        padding-left: 0;
+    }
+    
+    .my-info h1 {
+        font-size: 50px;
+        font-weight: 700;
+    }
+    
+    .blog {
+        background-color: #3f4346;
+    }
+</style>
 
 <body>
+    <section class="navbar">
+        <div class="nav-img">
+            <img class="logo-image" src="" alt="">
+        </div>
+        <div class="navitem my-3">
+            <ul>
+                <li>
+                    <a href="home"> Home</a>
+                </li>
+                <li>
+                    <a href=" # "> Start Here</a>
+                </li>
+                <li>
+                    <a href="# "> Journal</a>
+                </li>
+                <li>
+                    <a href="# "> Video</a>
+                </li>
+                <li>
+                    <a href="search"><i class="fa fa-search"></i></a>
+                </li>
+            </ul>
+        </div>
+        <div class="user-info navitem " style="margin-right: 3rem;">
+            <ul>
+
+                <li>
+
+                    <a href="register"> login</a>
+                </li>
+                <li>
+                    <a href=" # "><span>Subscibe</span></a>
+                </li>
+
+            </ul>
+        </div>
+    </section>
+
+    <div>
+        <button onclick="goBack()" style="text-decoration: none; border-radius: 50%; border: none; ">X</button>
+    </div>
+    <div class=" col-lg-4 mx-auto my-4">
+
+        <div class="p-4">
+            <form action="" method="POST" class="shadow px-3">
+                {% csrf_token %}
+                <div class="alert alert-success text-center" style="margin-left:-1rem; margin-right:-1rem; font-size: 21px; font-weight: 700;">Create Account</div>
+                <div class="mb-3">
+                    <label for="exampleInputPassword1" class="form-label" style="color: white; font-size: 18px;"> {{form.username.label}}</label><span style="color: red;">*</span> {{form.username}}
+                </div>
+
+                <div class="mb-3 ">
+                    <label for="exampleInputPassword1 " class="form-label " style="color: white; font-size: 18px;">   {{form.first_name.label}}</label><span style="color: red;">*</span> {{form.first_name}}
+                </div>
+                <div class="mb-3 ">
+                    <label for="exampleInputPassword1 " class="form-label " style="color: white; font-size: 18px;"> {{form.last_name.label}}</label><span style="color: red;">*</span> {{form.last_name}}
+                </div>
+                <div class="mb-3 ">
+                    <label for="exampleInputPassword1 " class="form-label " style="color: white; font-size: 18px;">  {{form.email.label}}</label><span style="color: red;">*</span> {{form.email}}
+                </div>
+                <div class="mb-3 ">
+                    <label for="exampleInputPassword1 " class="form-label " style="color: white; font-size: 18px;">   {{form.password1.label}}</label> <span style="color: red;">*</span>{{form.password1}}
+                </div>
+                <div class="mb-3 ">
+                    <label for="exampleInputPassword1 " class="form-label " style="color: white; font-size: 18px;">   {{form.password2.label}}</label><span style="color: red;">*</span> {{form.password2}}
+                </div>
+
+
+                <hr>
+                <button type="submit " class="btn btn-success my-2 ">Sign-up</button>
+                <div class="my-1 " style="display:flex;">
+<h6 style="color:white;">Already have account / </h6>
+                    <a href="{% url 'login' %} " style="text-decoration: none; ">login Account</a>
+                </div>
+            </form>
+        </div>
+    </div>
+    <script>
+        var form_fields = document.getElementsByTagName('input')
+        form_fields[1].placeholder = 'tarun@123....';
+        form_fields[2].placeholder = 'tarun....';
+        form_fields[3].placeholder = 'kumar....';
+        form_fields[4].placeholder = 'tarun@123gmail.com...';
+        form_fields[5].placeholder = '********';
+        form_fields[6].placeholder = '*********';
+
+
+        function goBack() {
+            window.history.back();
+        }
+    </script>
+
+    <!-- Optional JavaScript; choose one of the two! -->
+
+    <!-- Option 1: Bootstrap Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js " integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0 " crossorigin="anonymous "></script>
+
 
 </body>
 
