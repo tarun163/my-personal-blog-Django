@@ -20,7 +20,8 @@ urlpatterns = [
     path('', views.PostList.as_view(), name='home'),
     path('register/',views.register, name="register"),
     path('login/',views.login,name="login"),
-    path('<slug:slug>/',views.PostDetails.as_view(),name='post_detail')
+    path('<slug:slug>/',views.PostDetails.as_view(),name='post_detail'),
+    path('createblog/',views.createblog, name="createblog"),
   
   
 ]

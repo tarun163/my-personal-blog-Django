@@ -32,3 +32,6 @@ class PostDetails(generic.DetailView):
     model = Post
     template_name = 'post_detail.html'    
        
+def createblog(request):
+    context = {}
+    return render(request,'createblog.html', context)

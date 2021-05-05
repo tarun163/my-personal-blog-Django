@@ -1,6 +1,5 @@
-{% extends 'base.html' %}
-{% block content %}<style>
-
+{% extends 'base.html' %} {% block content %}
+<style>
     .my-info {
         background-color: #3f4346;
         font-family: sans-serif;
@@ -39,16 +38,16 @@
 </section>
 
 <section class="blog ">
-{% for post in post_list %}
+    {% for post in post_list %}
     <div class="container my-5 shadow p-2">
         <h1>{{post.title}}</h1>
         <h5>{{post.author}} | {{post.created_on}}</h5>
         <p>{{post.content|slice:":200"}}.......</p>
- 
- <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More &rarr;</a>
+
+        <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More &rarr;</a>
     </div>
 
-{% endfor %}
+    {% endfor %}
 </section>
 <!-- Optional JavaScript; choose one of the two! -->
 
