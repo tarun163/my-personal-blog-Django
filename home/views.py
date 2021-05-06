@@ -4,8 +4,26 @@ from .forms import CreateUserForm
 from django.views import generic
 from .models import Post
 from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth.models import User
+
 # Create your views here.
 
+def createblog(request):
+    context = {'success':False}
+    if request.method == 'POST':
+        alltasks = Post.objects.all() 
+        user = request.POST['user']
+        title = request.POST['title']
+        content = request.POST['content']
+        status = request.POST['status']
+
+        ins = Post(title=title,author=user,content=content,status=status)
+        ins.save()
+        context = {'success':True}
+    return render(request,'createblog.html', context)
+
+def search(request):
+    return render(request,'search.html')   
 
 def register(request):
     form = CreateUserForm()
@@ -32,6 +50,4 @@ class PostDetails(generic.DetailView):
     model = Post
     template_name = 'post_detail.html'    
        
-def createblog(request):
-    context = {}
-    return render(request,'createblog.html', context)
+ 

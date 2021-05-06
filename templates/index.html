@@ -24,27 +24,36 @@
         border-radius: 8px;
     }
 </style>
-<section id="home" class="my-info text-center p-lg-4 h-100">
+<section id="home" class="my-info text-center container-fluid px-0 mx-0 py-3">
 
-    <h1>Welcome to Tarunkumar.com,</h1>
+    <h1>Welcome to My Personal Blog,</h1>
     <h2>A app and Web devloper</h2>
     <p>i'm a computer scince student from iiitdmj</p>
-    <div class="px-0 mx-0">
-        <img class="w-90 h-30" src="https://miro.medium.com/max/11014/1*xAFAiAxqZVrOVLBTo9tf6w.jpeg " alt="programming">
+    <div class="">
+        <img style="width: 100%; height: 760px;" src="https://images.unsplash.com/photo-1529465230221-a0d10e46fcbb?ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&ixlib=rb-1.2.1&auto=format&fit=crop&w=1050&q=80" alt="">
 
     </div>
     <br>
     <p>here i'm ending the day with nothing</p>
 </section>
 
-<section class="blog ">
-    {% for post in post_list %}
-    <div class="container my-5 shadow p-2">
-        <h1>{{post.title}}</h1>
-        <h5>{{post.author}} | {{post.created_on}}</h5>
-        <p>{{post.content|slice:":200"}}.......</p>
+<section class="blog " style="">
 
-        <a href="{% url 'post_detail' post.slug %}" class="btn btn-primary">Read More &rarr;</a>
+
+
+
+    {% for post in post_list %}
+
+    <div class="container my-5 shadow p-2 ">
+        <div class="row ">
+            <div class=" left mt-3 mb-4 ">
+                <h2>{{post.title}}</h2>
+                <h6 style="color: #3f4346;">{{post.author}} | {{post.created_on}}</h6>
+                <p>{{post.content|slice:":200 "}}.......</p>
+
+                <a href="{% url 'post_detail' post.slug %} " class="btn btn-primary ">Read More &rarr;</a>
+            </div>
+        </div>
     </div>
 
     {% endfor %}

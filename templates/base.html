@@ -37,6 +37,41 @@
     .navitem ul li a span {
         color: rgb(235, 146, 31);
     }
+    
+    footer {
+        height: 260px;
+        width: 100%;
+        background-color: #3f4346;
+        padding-bottom: 0%;
+    }
+    
+    footer .container h2 {
+        color: deeppink;
+    }
+    
+    footer .container h4 {
+        color: aliceblue;
+        font-size: 17px;
+        margin-top: 2rem;
+    }
+    
+    footer .container .link ul {
+        display: flex;
+        list-style-type: none;
+        margin-left: 28rem;
+        margin-top: 2rem;
+    }
+    
+    footer .container .link ul li {
+        text-decoration: none;
+        padding-left: 3rem;
+    }
+    
+    footer .container .link ul li a {
+        text-decoration: none;
+        font-size: 30px;
+        font-weight: 500;
+    }
 </style>
 
 <body>
@@ -50,16 +85,16 @@
                     <a href="{% url 'home' %}"> Home</a>
                 </li>
                 <li>
-                    <a href=" {% url 'createblog' %}"> Start Here</a>
+                    <a href="createblog"> Start Here</a>
                 </li>
                 <li>
-                    <a href="# "> Journal</a>
+                    <a href="#"> Journal</a>
                 </li>
                 <li>
-                    <a href="# "> Video</a>
+                    <a href="#"> Video</a>
                 </li>
                 <li>
-                    <a href="search"><i class="fa fa-search"></i></a>
+                    <a href="{% url 'search' %}"><i class="fa fa-search"></i></a>
                 </li>
             </ul>
         </div>
@@ -78,7 +113,30 @@
         </div>
     </section>
     {% block content %} {% endblock content %}
-    <footer>copyright tarun</footer>
+    <footer>
+        <div class="container text-center pt-5">
+            <h2>Contact Me</h2>
+            <div class="link">
+                <ul>
+                    <li>
+                        <a href="#"><i class="fab fa-facebook"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-twitter"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-git"></i></a>
+                    </li>
+                    <li>
+                        <a href="#"><i class="fab fa-instagram"></i></a>
+                    </li>
+
+                </ul>
+            </div>
+            <h4>Phone - 8827290484, email - tarunsuryavanshi88@gmail.com</h4>
+            <p>Copyright by tarun kumar</p>
+        </div>
+    </footer>
 </body>
 
 </html>

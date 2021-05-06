@@ -11,26 +11,26 @@
 </div>
 <div class="container my-5 shadow">
     <form method="POST" action="" class="p-3">
-
+{% csrf_token %}
         <div class="mb-3">
             <label for="user" class="form-label">User-name</label>
-            <input type="text" class="form-control" id="user" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="user" name="user" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="title" class="form-label">Title</label>
-            <input type="text" class="form-control" id="title" aria-describedby="emailHelp">
+            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
         </div>
         <div class="mb-3">
             <label for="content" class="form-label">content</label>
-            <textarea style="height: 100px;" type="text" class="form-control" id="content" aria-describedby="emailHelp"></textarea>
+            <textarea style="height: 100px;" type="text" class="form-control" name="content" id="content" aria-describedby="emailHelp"></textarea>
         </div>
         <div class="dropdown mb-3 ">
-            <label for="cars">Status:</label>
+            <label for="status">Status:</label>
 
-            <select name="cars" id="cars">
-                <option value="volvo">None</option>
-              <option value="volvo">Draft</option>
-              <option value="saab">Publish</option>
+            <select name="status" id="status">
+               
+              <option value="0">Draft</option>
+              <option value="1">Publish</option>
               
             </select>
         </div>
