@@ -38,10 +38,6 @@
 </section>
 
 <section class="blog " style="">
-
-
-
-
     {% for post in post_list %}
 
     <div class="container my-5 shadow p-2 ">
@@ -55,8 +51,20 @@
             </div>
         </div>
     </div>
-
     {% endfor %}
+
+    <!---->{% if is_paginated %}
+    <nav arial-lable="page navigation conatiner example"></nav>]
+    <ul class="pagination justify-content-center">
+        {% if page_obj.has_previous %}
+        <li><a href="?page={{ page_obj.previos_page_number}}" class="page-link">&laquo; PREV </a></li>
+
+        {% endif %} {% if page_obj.has_next %}
+        <li><a href="?page={{ page_obj.next_page_number }}" class="page-link"> NEXT &raquo; </a></li>
+        {% endif %}
+    </ul>
+    </nav>
+    {% endif %}
 </section>
 <!-- Optional JavaScript; choose one of the two! -->
 
