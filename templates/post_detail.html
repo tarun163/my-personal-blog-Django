@@ -1,0 +1,40 @@
+{% extends 'base.html' %} {% block content %}
+
+<style>
+    .card {
+        box-shadow: 0 16px 48px #E3E7EB;
+    }
+    
+    .side-card {
+        margin-left: 66rem;
+        margin-top: -13rem;
+        width: 300px;
+    }
+</style>
+<div style="display: flex;">
+
+    <div class="container ">
+        <div class="row">
+            <div class="m-4 card mb-4  mt-3 left  top">
+                <div class="card-body">
+                    <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
+                    <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
+                    <p class="card-text ">{{ object.content | safe }}</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <section class="">
+        <div class=" ">
+            <div class="card my-4 mt-3 w-75 m-lg-5 ">
+                <h5 class="card-header">About Us</h5>
+                <div class="card-body">
+                    <p class="card-text"> This awesome blog is made on the top of our Favourite full stack Framework 'Django', follow up the tutorial to learn how we made it..!</p>
+                    <a href="https://djangocentral.com/building-a-blog-application-with-django" class="btn btn-danger">Know more!</a>
+                </div>
+            </div>
+        </div>
+    </section>
+</div>
+{% endblock content %}

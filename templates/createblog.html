@@ -1,0 +1,55 @@
+{% extends 'base.html' %} {% block content %}
+<style>
+    .container {
+        width: 60%;
+    }
+</style>
+
+
+<div>
+    <button onclick="goBack()" style="text-decoration: none; border-radius: 50%; border: none; ">X</button>
+</div>
+<div class="container my-5 shadow">
+    <form method="POST" action="" class="p-3">
+{% csrf_token %}
+        <div class="mb-3">
+            <label for="user" class="form-label">User-name</label>
+            <input type="text" class="form-control" id="user" name="user" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="title" class="form-label">Title</label>
+            <input type="text" class="form-control" id="title" name="title" aria-describedby="emailHelp">
+        </div>
+        <div class="mb-3">
+            <label for="content" class="form-label">content</label>
+            <textarea style="height: 100px;" type="text" class="form-control" name="content" id="content" aria-describedby="emailHelp"></textarea>
+        </div>
+        <div class="dropdown mb-3 ">
+            <label for="status">Status:</label>
+
+            <select name="status" id="status">
+               
+              <option value="0">Draft</option>
+              <option value="1">Publish</option>
+              
+            </select>
+        </div>
+        <button type="submit" class="btn btn-primary">Submit</button>
+    </form>
+</div>
+<script>
+    function goBack() {
+        window.history.back();
+    }
+</script>
+
+<!-- Optional JavaScript; choose one of the two! -->
+
+<!-- Option 1: Bootstrap Bundle with Popper -->
+<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.0.0-beta2/dist/js/bootstrap.bundle.min.js " integrity="sha384-b5kHyXgcpbZJO/tY9Ul7kGkf1S0CWuKcCD38l8YkeH8z8QjE0GmW1gYU5S9FOnJ0 " crossorigin="anonymous "></script>
+
+
+</body>
+
+</html>
+{% endblock %}
