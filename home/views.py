@@ -4,7 +4,7 @@ from .forms import CreateUserForm
 from .forms import CommentForm
 from django.views import generic
 from .models import Post
-from django.contrib.auth import authenticate, login, logout
+from django.contrib.auth import authenticate, login as loginUser, logout
 from django.contrib.auth.models import User
 from django.shortcuts import render, get_object_or_404
 
@@ -40,7 +40,23 @@ def register(request):
     return render(request,'register.html',context)    
 
 def login(request):
-    context = {}
+    context = {'success':False}
+    if request.method == 'POST':
+        form = AuthenticationForm(data = request.POST)
+        print(form.is_valid())
+        if form.is_valid():
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password')
+            print(username,password)
+            user = authenticate(username = username, password = password)
+            print(user)
+            if user is not None:
+                loginUser(request, user)
+                return redirect('home')
+
+        else:
+            return redirect('login')        
+
 
     return render(request,'login.html',context) 
        
