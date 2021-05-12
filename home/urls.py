@@ -22,7 +22,7 @@ urlpatterns = [
     path('login/',views.login,name="login"),
     path('createblog/',views.createblog, name="createblog"),
     path('search/',views.search,name="search"),
-    path('<slug:slug>/',views.PostDetails.as_view(),name='post_detail'),
+    path('<slug:slug>/',views.post_detail,name='post_detail'),
     
   
   

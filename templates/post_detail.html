@@ -10,22 +10,52 @@
         margin-top: -13rem;
         width: 300px;
     }
+    
+    @media only screen and (max-width: 1024px) {
+        footer .container .link ul {
+            display: flex;
+            list-style-type: none;
+            margin-left: 16rem;
+            margin-top: 2rem;
+        }
+        .navbar {
+            display: none;
+        }
+        .hamberger {
+            display: block;
+        }
+    }
+    
+    @media only screen and (max-width: 770px) {
+        .about {
+            display: none;
+        }
+        .mt-3 {
+            margin-top: 5rem!important;
+        }
+        footer .container .link ul {
+            display: flex;
+            list-style-type: none;
+            margin-left: 1rem;
+            margin-top: 2rem;
+        }
+    }
 </style>
 <div style="display: flex;">
 
     <div class="container ">
         <div class="row">
-            <div class="m-4 card mb-4  mt-3 left  top">
+            <div class="m-3 card mb-3  mt-3 left  top">
                 <div class="card-body">
-                    <h1>{% block title %} {{ object.title }} {% endblock title %}</h1>
+                    <h1>{% block title %} {{ post.title }} {% endblock title %}</h1>
                     <p class=" text-muted">{{ post.author }} | {{ post.created_on }}</p>
-                    <p class="card-text ">{{ object.content | safe }}</p>
+                    <p class="card-text ">{{ post.content | safe }}</p>
                 </div>
             </div>
         </div>
     </div>
 
-    <section class="">
+    <section class="about">
         <div class=" ">
             <div class="card my-4 mt-3 w-75 m-lg-5 ">
                 <h5 class="card-header">About Us</h5>
@@ -36,5 +66,44 @@
             </div>
         </div>
     </section>
+</div>
+<div class="col-md-8 card mb-4  mt-3 ">
+    <div class="card-body">
+        <h2>{{ comments.count }} comments</h2>
+        {% for comment in comments %}
+        <div class="comments" style="padding: 10px;">
+            <p class="bold" style="font-size:17px;">
+                {{comment.name}}
+                <span class="text-muted font-weight-normal">
+{{ comment.created_on }}
+</span>
+            </p>
+            {{ comment.body | linebreaks}}
+        </div>
+        <hr> {% endfor %}
+    </div>
+</div>
+<div class="col-md-10 card mb-4  mt-3 ">
+    <div class="card-body">
+        {% if new_comment %}
+        <div class="alert alert-success" role="alert"> Your comment is awaiting moderation</div>
+        {% else %}
+        <h3>Leave a comment</h3>
+        <form action="" method="POST" style="margin-top: 1.3em;">
+            {% csrf_token %}
+            <div class="mb-3 ">
+                <label for="name" class="form-label" style="color: black; font-size: 18px;">{{comment_form.name.label}}</label><span style="color: red;">*</span> {{comment_form.name}}
+            </div>
+            <div class="mb-3 ">
+                <label for="email " class="form-label " style="color: black; font-size: 18px;">{{comment_form.email.label}}</label><span style="color: red;">*</span> {{comment_form.email}}
+            </div>
+            <div class="form-floating m-3">
+
+                <textarea name="body" class="form-control" id="id_body" placeholder="Leave a comment here" id="floatingTextarea2" style="height: 100px"></textarea>
+                <label for="body">Comments</label>
+            </div>
+            <button type="submit" class="btn btn-primary btn-lg">Submit</button> </form>
+        {% endif %}
+    </div>
 </div>
 {% endblock content %}

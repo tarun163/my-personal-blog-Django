@@ -42,7 +42,8 @@
         height: 260px;
         width: 100%;
         background-color: #3f4346;
-        padding-bottom: 0%;
+        padding-bottom: 0;
+        margin-bottom: 0rem;
     }
     
     footer .container h2 {
@@ -52,14 +53,15 @@
     footer .container h4 {
         color: aliceblue;
         font-size: 17px;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
+        line-height: 1.5;
     }
     
     footer .container .link ul {
         display: flex;
         list-style-type: none;
         margin-left: 28rem;
-        margin-top: 2rem;
+        margin-top: 1.5rem;
     }
     
     footer .container .link ul li {
@@ -72,14 +74,184 @@
         font-size: 30px;
         font-weight: 500;
     }
+    
+    .site-main-wrapper {
+        position: relative;
+    }
+    
+    .hamberger {
+        position: absolute;
+        top: 40px;
+        right: 40px;
+        z-index: 11;
+        background: none;
+        border: none;
+        display: none;
+    }
+    
+    .hamberger img {
+        width: 30px;
+        height: 30px;
+    }
+    
+    .mobile-nav {
+        position: fixed;
+        top: 0;
+        left: 0;
+        background: white;
+        opacity: .7;
+        width: 100%;
+        height: 100%;
+        transform: translateX(-100%);
+        transition: all.5s ease-in-out;
+    }
+    
+    .open {
+        transform: translateX(0);
+    }
+    
+    .mobile-nav ul {
+        list-style-type: none;
+        margin-top: 3rem;
+    }
+    
+    .mobile-nav ul li {
+        text-decoration: none;
+        padding-left: 2rem;
+        margin-bottom: 1rem;
+    }
+    
+    .mobile-nav ul li a {
+        text-decoration: none;
+        font-size: 25px;
+        font-weight: 500;
+        color: black
+    }
+    
+    .times {
+        z-index: 11;
+        background: none;
+        border: none;
+        font-size: 25px;
+        font-weight: 500;
+        margin-top: 40px;
+        position: fixed;
+        right: 30px;
+    }
+    
+    .login {
+        display: none;
+    }
+    
+    .times img {
+        width: 30px;
+    }
+    
+    @media only screen and (max-width: 1024px) {
+        footer .container .link ul {
+            display: flex;
+            list-style-type: none;
+            margin-left: 16rem;
+            margin-top: 2rem;
+        }
+        .navbar {
+            display: none;
+        }
+        .hamberger {
+            display: block;
+        }
+        .login {
+            display: block;
+            padding-top: 20px;
+            position: absolute;
+            text-align: center;
+        }
+        .py-3 {
+            padding-top: 6rem!important;
+            padding-bottom: 1rem!important;
+        }
+        ol,
+        ul {
+            padding-left: 22rem;
+        }
+        footer .container .link ul {
+            text-decoration: none;
+            padding-left: 2rem;
+        }
+    }
+    
+    @media only screen and (max-width: 770px) {
+        footer .container .link ul {
+            display: flex;
+            list-style-type: none;
+            margin-left: 1rem;
+            margin-top: 1rem;
+        }
+        footer .container .link ul li {
+            text-decoration: none;
+            padding-left: 2rem;
+        }
+        .py-3 {
+            padding-top: 6rem!important;
+            padding-bottom: 1rem!important;
+        }
+        .login {
+            display: block;
+            padding-top: 20px;
+            position: absolute;
+        }
+        element.style {
+            width: 1;
+            height: 300px;
+        }
+        .hamberger img {
+            width: 25px;
+            height: 25px;
+        }
+        .hamberger {
+            position: absolute;
+            top: 20px;
+            z-index: 11;
+            background: none;
+            border: none;
+            right: 20px;
+        }
+        ol,
+        ul {
+            padding-left: 1rem;
+        }
+    }
 </style>
 
 <body>
-    <section class="navbar">
-        <div class="nav-img">
-            <img class="logo-image" src="" alt="">
+
+    <div class="site-main-wrapper">
+
+        <button class="hamberger">
+            <img src="https://cdn.iconscout.com/icon/premium/png-256-thumb/hamburger-menu-2-520710.png" alt="">
+           
+        </button>
+        <div class="user-info navitem login" style="margin-right: 2rem;">
+            <ul>
+                <li>
+                    <a href="{% url 'search' %}"><i class="fa fa-search"></i></a>
+                </li>
+
+                <li>
+
+                    <a href="register"> login</a>
+                </li>
+                <li>
+                    <a href=" # "><span>Subscibe</span></a>
+                </li>
+
+            </ul>
         </div>
-        <div class="navitem my-3">
+        <div class="mobile-nav">
+            <button class="times">
+                <img src="https://www.kindpng.com/picc/m/745-7451589_erase-svg-png-icon-free-download-wrong-cross.png" alt="">
+               
+            </button>
             <ul>
                 <li>
                     <a href="{% url 'home' %}"> Home</a>
@@ -93,50 +265,87 @@
                 <li>
                     <a href="#"> Video</a>
                 </li>
-                <li>
-                    <a href="{% url 'search' %}"><i class="fa fa-search"></i></a>
-                </li>
-            </ul>
-        </div>
-        <div class="user-info navitem " style="margin-right: 3rem;">
-            <ul>
-
-                <li>
-
-                    <a href="register"> login</a>
-                </li>
-                <li>
-                    <a href=" # "><span>Subscibe</span></a>
-                </li>
 
             </ul>
         </div>
-    </section>
-    {% block content %} {% endblock content %}
-    <footer>
-        <div class="container text-center pt-5">
-            <h2>Contact Me</h2>
-            <div class="link">
+
+        <section class="navbar">
+            <div class="nav-img">
+                <img class="logo-image" src="" alt="">
+            </div>
+            <div class="navitem my-3">
                 <ul>
                     <li>
-                        <a href="#"><i class="fab fa-facebook"></i></a>
+                        <a href="{% url 'home' %}"> Home</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-twitter"></i></a>
+                        <a href="createblog"> Start Here</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-git"></i></a>
+                        <a href="#"> Journal</a>
                     </li>
                     <li>
-                        <a href="#"><i class="fab fa-instagram"></i></a>
+                        <a href="#"> Video</a>
+                    </li>
+                    <li>
+                        <a href="{% url 'search' %}"><i class="fa fa-search"></i></a>
+                    </li>
+                </ul>
+            </div>
+            <div class="user-info navitem " style="margin-right: 3rem;">
+                <ul>
+
+                    <li>
+
+                        <a href="register"> login</a>
+                    </li>
+                    <li>
+                        <a href=" # "><span>Subscibe</span></a>
                     </li>
 
                 </ul>
             </div>
-            <h4>Phone - 8827290484, email - tarunsuryavanshi88@gmail.com</h4>
-            <p>Copyright by tarun kumar</p>
-        </div>
-    </footer>
+        </section>
+        {% block content %} {% endblock content %}
+        <footer>
+            <div class="container text-center pt-5">
+                <h2>Contact Me</h2>
+                <div class="link">
+                    <ul>
+                        <li>
+                            <a href="#"><i class="fab fa-facebook"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-twitter"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-git"></i></a>
+                        </li>
+                        <li>
+                            <a href="#"><i class="fab fa-instagram"></i></a>
+                        </li>
+
+                    </ul>
+                </div>
+                <h4>Phone - 8827290484,
+                    <br>email - tarunsuryavanshi88@gmail.com</h4>
+                <p>Copyright by tarun kumar</p>
+            </div>
+        </footer>
+
+    </div>
+    <script>
+        let hamberger = document.querySelector('.hamberger');
+        let times = document.querySelector('.times');
+        let mobileNav = document.querySelector('.mobile-nav')
+        hamberger.addEventListener('click', function() {
+            mobileNav.classList.add('open')
+            mobileNav.classList.remove('hamberger')
+        });
+        times.addEventListener('click', function() {
+            mobileNav.classList.remove('open')
+        });
+    </script>
 </body>
 
 </html>
