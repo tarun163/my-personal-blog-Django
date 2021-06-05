@@ -34,10 +34,13 @@ def register(request):
         form = CreateUserForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('login')
+            return redirect('verify')
 
     context = {'form':form}
     return render(request,'register.html',context)    
+
+def verify(request):
+    return render(request,'verify.html')    
 
 def login(request):
     context = {'success':False}
