@@ -1,7 +1,7 @@
 {% extends 'base.html' %} {% block content %}
 <style>
     body {
-        background-image: url('https://wallpaper.dog/large/20395919.jpg');
+        background-image: url('https://cdn.wallpapersafari.com/31/6/gDV38U.jpg');
     }
     
     @media only screen and (max-width: 1024px) {
@@ -62,6 +62,8 @@
 
             <hr>
             <button type="submit " class="btn btn-success my-2 ">log-in</button>
+            <br>
+            <a href="{% url 'forget_password' %} " style="text-decoration: none; ">forget password</a>
             <div class="my-1 " style="display:flex;">
                 <h6 style="color:white;" style="color: white; font-size: 18px;">haven't account / </h6>
                 <a href="{% url 'register' %} " style="text-decoration: none; ">Create Account</a>
