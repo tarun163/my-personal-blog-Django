@@ -1,4 +1,9 @@
 # my-personal-blog-Django
-Here i have created my personal blog for computer science related things
-anyone can register ,then login 
-with your login id u can comment on the post
+A Personal_blog App for All type blogs
+Can authentification by Email token based authentication
+Can comment on posts
+
+#requirements 
+- Django Pyhopn
+- Django eMail sender 
+ 
