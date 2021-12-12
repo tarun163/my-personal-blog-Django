@@ -13,8 +13,8 @@ https://docs.djangoproject.com/en/3.1/ref/settings/
 from pathlib import Path
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
-BASE_DIR = Path(__file__).resolve().parent.parent
-
+# BASE_DIR = Path(__file__).resolve().parent.parent
+import os
 
 # Quick-start development settings - unsuitable for production
 # See https://docs.djangoproject.com/en/3.1/howto/deployment/checklist/
@@ -24,8 +24,10 @@ SECRET_KEY = '3u8@q#6i!*irgnk^a@khuxdqpueq#s^&4o_&vghdln35z_&fi-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
+BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = ["*"]
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 # Application definition
@@ -38,6 +40,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'storages'
 ]
 
 EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
@@ -76,18 +79,54 @@ TEMPLATES = [
     },
 ]
 
-WSGI_APPLICATION = 'myblog.wsgi.application'
+#WSGI_APPLICATION = 'myblog.wsgi.application'
 
+AWS_ACCESS_KEY_ID = 'AKIAW2V64HJ7RCPWVOOO'
+AWS_SECRET_ACCESS_KEY = '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'
+AWS_STORAGE_BUCKET_NAME = 'mypersonalblog'
+AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_S3_OBJECT_PARAMETERS = {
+#     'CacheControl': 'max-age=86400',
+# }
+# AWS_LOCATION = 'static'
 
+# STATICFILES_DIRS = [
+#     os.path.join(BASE_DIR, 'static'),
+# ]
+# STATIC_URL = 'https://%s/%s/' % (AWS_S3_USTOM_CDOMAIN, AWS_LOCATION)
+STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
+AWS_S3_REGION_NAME = 'us-east-2'
+AWS_S3_FILE_OVERWRITE = False
+AWS_DEFAULT_ACL = None
+AWS_S3_VERIFY = True
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+
+
+ROOT_URLCONF = 'home.urls'
+ASGI_APPLICATION = 'core.asgi.application'
 
 DATABASES = {
     'default': {
         'ENGINE': 'django.db.backends.sqlite3',
-        'NAME': str(BASE_DIR / 'db.sqlite3'),
+        'NAME': os.path.join(BASE_DIR , 'db.sqlite3'),
     }
 }
+
+# DATABASES={
+#     'default':{
+#         'ENGINE':'django.db.backends.mysql',
+#         'NAME':'loopdb1',
+#         'USER':'admin',
+#         'PASSWORD':'looploop',
+#         'HOST':'mysql-loop-db.crt88o3zmw99.ap-south-1.rds.amazonaws.com',
+#         'PORT':'3306',
+#         'OPTIONS':{
+#             'init_command':"SET sql_mode='STRICT_TRANS_TABLES'"
+#         }
+#     }
+# }
 
 
 # Password validation
@@ -127,5 +166,7 @@ USE_TZ = True
 # https://docs.djangoproject.com/en/3.1/howto/static-files/
 
 STATIC_URL = '/static/'
+
+# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 
