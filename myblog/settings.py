@@ -27,7 +27,7 @@ DEBUG = True
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-ALLOWED_HOSTS = ["*"]
+ALLOWED_HOSTS = []
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 # Application definition
@@ -43,13 +43,13 @@ INSTALLED_APPS = [
     'storages'
 ]
 
-EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
-EMAIL_HOST = 'smtp.gmail.com'
-EMAIL_PORT = 587
-EMAIL_USE_TLS = True
-EMAIL_HOST_USER = '2019163@iiitdmj.ac.in' 
-EMAIL_HOST_PASSWORD = 'taru163$#'
-PASSWORD_RESET_TIMEOUT_DAYS = 1
+# EMAIL_BACKEND = 'django.core.mail.backends.smtp.EmailBackend'
+# EMAIL_HOST = 'smtp.gmail.com'
+# EMAIL_PORT = 587
+# EMAIL_USE_TLS = True
+# EMAIL_HOST_USER = '2019163@iiitdmj.ac.in' 
+# EMAIL_HOST_PASSWORD = 'taru163$#'
+# PASSWORD_RESET_TIMEOUT_DAYS = 1
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
@@ -79,12 +79,12 @@ TEMPLATES = [
     },
 ]
 
-#WSGI_APPLICATION = 'myblog.wsgi.application'
+WSGI_APPLICATION = 'myblog.wsgi.application'
 
-AWS_ACCESS_KEY_ID = 'AKIAW2V64HJ7RCPWVOOO'
-AWS_SECRET_ACCESS_KEY = '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'
-AWS_STORAGE_BUCKET_NAME = 'mypersonalblog'
-AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
+# AWS_ACCESS_KEY_ID = 'AKIAW2V64HJ7RCPWVOOO'
+# AWS_SECRET_ACCESS_KEY = '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'
+# AWS_STORAGE_BUCKET_NAME = 'mypersonalblog'
+# AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 # AWS_S3_OBJECT_PARAMETERS = {
 #     'CacheControl': 'max-age=86400',
 # }
@@ -94,18 +94,18 @@ AWS_S3_CUSTOM_DOMAIN = '%s.s3.amazonaws.com' % AWS_STORAGE_BUCKET_NAME
 #     os.path.join(BASE_DIR, 'static'),
 # ]
 # STATIC_URL = 'https://%s/%s/' % (AWS_S3_USTOM_CDOMAIN, AWS_LOCATION)
-STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# STATICFILES_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 # Database
 # https://docs.djangoproject.com/en/3.1/ref/settings/#databases
-AWS_S3_REGION_NAME = 'us-east-2'
-AWS_S3_FILE_OVERWRITE = False
-AWS_DEFAULT_ACL = None
-AWS_S3_VERIFY = True
-DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_S3_REGION_NAME = 'us-east-2'
+# AWS_S3_FILE_OVERWRITE = False
+# AWS_DEFAULT_ACL = None
+# AWS_S3_VERIFY = True
+# DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
 
 
-ROOT_URLCONF = 'home.urls'
-ASGI_APPLICATION = 'core.asgi.application'
+# ROOT_URLCONF = 'home.urls'
+# ASGI_APPLICATION = 'core.asgi.application'
 
 DATABASES = {
     'default': {
@@ -167,6 +167,6 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-# STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 
 

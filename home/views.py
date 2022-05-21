@@ -23,12 +23,13 @@ def createblog(request):
     context = {'success':False}
     if request.method == 'POST':
         alltasks = Post.objects.all() 
-        user = request.POST['user']
+        user = request.user
         title = request.POST['title']
         content = request.POST['content']
         status = request.POST['status']
+        slug = title.lower()
 
-        ins = Post(title=title,author=user,content=content,status=status)
+        ins = Post(title=title,author=user,content=content,status=status,slug = slug)
         ins.save()
         context = {'success':True}
     return render(request,'createblog.html', context)
