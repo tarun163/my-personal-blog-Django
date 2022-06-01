@@ -23,11 +23,11 @@ import os
 SECRET_KEY = '3u8@q#6i!*irgnk^a@khuxdqpueq#s^&4o_&vghdln35z_&fi-'
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = False
 BASE_DIR = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ["mygroupcwc.herokuapp.com", "localhost"]
 
 DEFAULT_AUTO_FIELD='django.db.models.AutoField'
 # Application definition
@@ -53,6 +53,7 @@ INSTALLED_APPS = [
 
 MIDDLEWARE = [
     'django.middleware.security.SecurityMiddleware',
+    'whitenoise.middleware.WhiteNoiseMiddleware',
     'django.contrib.sessions.middleware.SessionMiddleware',
     'django.middleware.common.CommonMiddleware',
     'django.middleware.csrf.CsrfViewMiddleware',
